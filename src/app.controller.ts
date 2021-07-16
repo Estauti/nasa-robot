@@ -1,12 +1,12 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get, Param } from '@nestjs/common';
+import { RobotMovementService } from './robot-movement/robot-movement.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly robotMovementService: RobotMovementService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Get(':command')
+  getHello(@Param('command') command: string): string {
+    return this.robotMovementService.move(command);
   }
 }

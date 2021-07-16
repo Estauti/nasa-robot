@@ -1,10 +1,13 @@
+import { RobotMovementModule } from './robot-movement/robot-movement.module';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { RobotMovementService } from './robot-movement/robot-movement.service';
 
 @Module({
-  imports: [],
+  imports: [
+    RobotMovementModule,
+  ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [RobotMovementService],
 })
-export class AppModule {}
+export class AppModule { }
