@@ -5,9 +5,11 @@ import { RobotMovementService } from './robot-movement/robot-movement.service';
 
 @Module({
   imports: [
-    RobotMovementModule,
+    RobotMovementModule
   ],
   controllers: [AppController],
-  providers: [RobotMovementService],
+  providers: [
+    RobotMovementService
+  ],
 })
 export class AppModule { }
