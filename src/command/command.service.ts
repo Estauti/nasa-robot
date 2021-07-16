@@ -1,4 +1,6 @@
 import { Injectable } from '@nestjs/common';
+import { MovementCommand } from 'src/common/constants/movement-command.enum';
+import { RotationCommand } from 'src/common/constants/rotation-command.enum';
 
 @Injectable()
 export class CommandService {
@@ -7,10 +9,11 @@ export class CommandService {
   }
 
   isMovement(command: string): boolean {
-    return command == 'M';
+    return command == MovementCommand.FORWARD;
   }
 
   isRotation(command: string): boolean {
-    return ['L', 'R'].includes(command);
+    let rotations: Array<string> = [RotationCommand.LEFT, RotationCommand.RIGHT];
+    return rotations.includes(command);
   }
 }
