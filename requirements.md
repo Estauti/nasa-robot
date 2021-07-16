@@ -1,7 +1,7 @@
 ## Requisitos
 
 - [x] Permite receber uma string de comandos.
-- [] Aceita apenas os comandos M, L e R.
+- [x] Aceita apenas os comandos M, L e R.
 - [] Retorna a posição atual do robô.
 - [] Rotaciona o robô 90 graus para a direita no comando R.
 - [] Rotaciona o robô 90 graus para a esquerda no comando L.
