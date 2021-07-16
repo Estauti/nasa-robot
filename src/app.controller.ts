@@ -7,6 +7,7 @@ export class AppController {
 
   @Get(':command')
   getHello(@Param('command') command: string): string {
-    return this.robotMovementService.move(command);
+    return this.robotMovementService.call(command);
+    
   }
 }

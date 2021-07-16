@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { MovementCommand } from 'src/common/constants/movement-command.enum';
-import { RotationCommand } from 'src/common/constants/rotation-command.enum';
+import { MovementCommand } from 'src/shared/constants/movement-command.enum';
+import { RotationCommand } from 'src/shared/constants/rotation-command.enum';
 
 @Injectable()
 export class CommandService {
