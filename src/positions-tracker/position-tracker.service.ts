@@ -10,15 +10,11 @@ export class PositionTrackerService {
     this.positionHelper = new PositionHelper()
   }
 
-  previousPosition(): string {
+  lastPosition(): string {
     return this.positionHelper.format(
       Settings.INITIAL_X,
       Settings.INITIAL_Y,
       Settings.INITIAL_DIRECTION
     );
-  }
-
-  currentPosition(commandChain: string): string {
-    return "";
   }
 }

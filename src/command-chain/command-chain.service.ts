@@ -1,33 +1,28 @@
 import { Injectable } from '@nestjs/common';
 import { CommandService } from 'src/command/command.service';
-import { PositionTrackerService } from 'src/positions-tracker/position-tracker.service';
+import { RobotDriverService } from 'src/robot-driver/robot-driver.service';
+
 
 @Injectable()
 export class CommandChainService {
-  private positionTracker: PositionTrackerService;
+  execute(commandChain: string): void {
+    let robotDriver: RobotDriverService = new RobotDriverService();
 
-  constructor() {
-    this.positionTracker = new PositionTrackerService();
+    this.split(commandChain).forEach(command => {
+      robotDriver.execute(command);
+    });
   }
 
-  execute(commandChain: string): any {
-    let isValid: boolean = this.isValid(commandChain);
-    let previousPosition: string = this.positionTracker.previousPosition();
-    let currentPosition = isValid ? this.positionTracker.currentPosition(commandChain) : this.positionTracker.previousPosition();
-
-    return {
-      valid: isValid,
-      previousPosition: previousPosition,
-      currentPosition: currentPosition
-    }
-  }
-
-  private isValid(commandChain: string): boolean {
-    let validations: boolean[] = commandChain.split('').map(command => {
+  isValid(commandChain: string): boolean {
+    let validations: boolean[] = this.split(commandChain).map(command => {
       let commandService: CommandService = new CommandService();
       return commandService.isValid(command);
     });
 
     return validations.every(v => v == true);
+  }
+
+  split(commandChain: string): string[] {
+    return commandChain.split('');
   }
 }
