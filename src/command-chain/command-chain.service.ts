@@ -5,11 +5,14 @@ import { RobotDriverService } from 'src/robot-driver/robot-driver.service';
 
 @Injectable()
 export class CommandChainService {
+  constructor(private robotDriver: RobotDriverService) {
+
+  }
   execute(commandChain: string): void {
-    let robotDriver: RobotDriverService = new RobotDriverService();
+    // let robotDriver: RobotDriverService = new RobotDriverService();
 
     this.split(commandChain).forEach(command => {
-      robotDriver.execute(command);
+      this.robotDriver.execute(command);
     });
   }
 

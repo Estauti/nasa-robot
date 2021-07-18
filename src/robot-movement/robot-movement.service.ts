@@ -4,22 +4,19 @@ import { PositionTrackerService } from 'src/positions-tracker/position-tracker.s
 
 @Injectable()
 export class RobotMovementService {
-  private commandChainService: CommandChainService
-  private positionTracker: PositionTrackerService;
-
-  constructor() {
-    this.commandChainService = new CommandChainService();
-    this.positionTracker = new PositionTrackerService();
+  constructor(
+    private positionTracker: PositionTrackerService, 
+    private commandChainService: CommandChainService) {
   };
 
-  call(commandChain: string): any {
+  async call(commandChain: string): Promise<any> {
     let isValid: boolean = this.commandChainService.isValid(commandChain);
-    let lastPosition: string = this.positionTracker.lastPosition();
-    let currentPosition = lastPosition;
+    let lastPosition: string = await this.positionTracker.lastPosition();
+    let currentPosition: string = lastPosition;
 
     if (isValid) {
       this.commandChainService.execute(commandChain);
-      currentPosition = this.positionTracker.lastPosition();
+      currentPosition = await this.positionTracker.lastPosition();
     }
 
     return {

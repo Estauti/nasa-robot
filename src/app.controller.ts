@@ -6,7 +6,7 @@ export class AppController {
   constructor(private readonly robotMovementService: RobotMovementService) {}
 
   @Get(':command')
-  getHello(@Param('command') command: string): string {
+  async getHello(@Param('command') command: string): Promise<string> {
     return this.robotMovementService.call(command);
     
   }

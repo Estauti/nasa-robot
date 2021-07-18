@@ -2,14 +2,28 @@ import { RobotMovementModule } from './robot-movement/robot-movement.module';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { RobotMovementService } from './robot-movement/robot-movement.service';
+import { CommandLog } from './db/entities/command_log.entity';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { createTypeOrmProdConfig } from 'app.dbconfig';
+import { PositionTrackerModule } from './positions-tracker/position-tracker.module';
+import { PositionTrackerService } from './positions-tracker/position-tracker.service';
+import { join } from "path";
+import { CommandChainService } from './command-chain/command-chain.service';
+import { RobotDriverService } from './robot-driver/robot-driver.service';
 
 @Module({
   imports: [
-    RobotMovementModule
+    RobotMovementModule,
+    PositionTrackerModule,
+    TypeOrmModule.forRoot(createTypeOrmProdConfig()),
+    TypeOrmModule.forFeature([CommandLog])
   ],
   controllers: [AppController],
   providers: [
-    RobotMovementService
+    RobotMovementService,
+    PositionTrackerService,
+    CommandChainService,
+    RobotDriverService
   ],
 })
 export class AppModule { }
