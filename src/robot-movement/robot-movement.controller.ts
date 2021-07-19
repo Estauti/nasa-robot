@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { RobotMovementService } from './robot-movement.service';
 
 @Controller('command')
@@ -6,9 +6,8 @@ export class RobotMovementController {
   constructor(private readonly robotMovementService: RobotMovementService) {
 
   }
-  @Get(':command')
-  async getHello(@Param('command') command: string): Promise<string> {
+  @Post()
+  async runCommand(@Body('command') command: string): Promise<string> {
     return this.robotMovementService.call(command);
-    
   }
 }

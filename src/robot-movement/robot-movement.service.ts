@@ -39,7 +39,7 @@ export class RobotMovementService {
   }
   saveInvalidCommand(position: Position, commandChain: string) {
     this.robotMovementRepository.create({
-      requestType: 'GET', 
+      requestType: 'POST', 
       command: commandChain, 
       valid: false,
       initialPositionX: position.x,

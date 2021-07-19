@@ -15,7 +15,7 @@ export class CommandChainService {
   }
   execute(position: Position, commandChain: string): Position {
     let data = {
-      requestType: 'GET', 
+      requestType: 'POST', 
       command: commandChain, 
       valid: true,
       initialPositionX: position.x,
