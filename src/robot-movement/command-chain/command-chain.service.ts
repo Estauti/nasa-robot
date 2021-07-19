@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CommandService } from 'src/robot-movement/command/command.service';
 import { RobotDriverService } from 'src/robot-movement/robot-driver/robot-driver.service';
+import { Position } from 'src/shared/classes/position';
 
 
 @Injectable()
@@ -8,12 +9,14 @@ export class CommandChainService {
   constructor(private robotDriver: RobotDriverService) {
 
   }
-  execute(commandChain: string): void {
-    // let robotDriver: RobotDriverService = new RobotDriverService();
+  execute(position: Position, commandChain: string): void {
+    let lastPosition: Position = position;
 
     this.split(commandChain).forEach(command => {
       this.robotDriver.execute(command);
     });
+
+    
   }
 
   isValid(commandChain: string): boolean {

@@ -4,31 +4,21 @@ import { CommandLog } from 'src/db/entities/command_log.entity';
 import { Position } from 'src/shared/classes/position';
 import { PositionHelper } from 'src/shared/helpers/position-helper';
 import { Repository } from 'typeorm';
+import RobotMovementRepository from '../robot-movement.repository';
+import { RobotMovementService } from '../robot-movement.service';
 
 @Injectable()
 export class PositionTrackerService {
-  private positionHelper: PositionHelper;
-
-  // @InjectRepository(CommandLog)
-  // private readonly commandLogRepository: Repository<CommandLog>
+  
 
   constructor(
-    @InjectRepository(CommandLog)
-    private readonly commandLogRepository: Repository<CommandLog>
-  ) {
-    this.positionHelper = new PositionHelper()
-  }
+    private robotMovementRepository: RobotMovementRepository
+  ) {}
 
-  async lastPosition(): Promise<string> {
-    let lastCommandLog = await this.commandLogRepository.findOne({order: {id: 'DESC'}});
-    let lastPosition: Position = !lastCommandLog
-                        ? Position.initialPosition()
-                        : Position.fromCommandLog(lastCommandLog);
-
-    return this.positionHelper.format(
-      lastPosition.x,
-      lastPosition.y,
-      lastPosition.direction
-    );
+  async lastPosition(): Promise<Position> {
+    let lastCommandLog = await this.robotMovementRepository.findLast();
+    return !lastCommandLog
+            ? Position.initialPosition()
+            : Position.fromCommandLog(lastCommandLog);
   }
 }

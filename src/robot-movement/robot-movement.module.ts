@@ -9,6 +9,7 @@ import { CommandLog } from 'src/db/entities/command_log.entity';
 import { CommandChainService } from 'src/robot-movement/command-chain/command-chain.service';
 import { RobotDriverModule } from 'src/robot-movement/robot-driver/robot-driver.module';
 import { RobotDriverService } from 'src/robot-movement/robot-driver/robot-driver.service';
+import RobotMovementRepository from './robot-movement.repository';
 
 @Module({
 	imports: [
@@ -23,7 +24,8 @@ import { RobotDriverService } from 'src/robot-movement/robot-driver/robot-driver
 		RobotMovementService,
 		PositionTrackerService,
 		CommandChainService,
-		RobotDriverService
+		RobotDriverService,
+		RobotMovementRepository
 	],
 })
 export class RobotMovementModule { }
