@@ -10,10 +10,12 @@ import { CommandChainService } from 'src/robot-movement/command-chain/command-ch
 import { RobotDriverModule } from 'src/robot-movement/robot-driver/robot-driver.module';
 import { RobotDriverService } from 'src/robot-movement/robot-driver/robot-driver.service';
 import RobotMovementRepository from './robot-movement.repository';
+import { CommandModule } from './command/command.module';
 
 @Module({
 	imports: [
 		CommandChainModule,
+		CommandModule,
 		PositionTrackerModule,
 		RobotDriverModule,
 		TypeOrmModule.forFeature([CommandLog])

@@ -1,13 +1,14 @@
 import { RobotDriverService } from './robot-driver.service';
 import { Module } from '@nestjs/common';
-import { CommandLog } from 'src/db/entities/command_log.entity';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { CommandModule } from '../command/command.module';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([CommandLog])],
+    imports: [
+        CommandModule
+    ],
     controllers: [],
     providers: [
-        RobotDriverService,
+        RobotDriverService
     ],
 })
 export class RobotDriverModule { }

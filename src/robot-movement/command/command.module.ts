@@ -7,5 +7,6 @@ import { Module } from '@nestjs/common';
     providers: [
         CommandService,
     ],
+    exports: [CommandService]
 })
 export class CommandModule { }

@@ -1,7 +1,7 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { RobotMovementService } from './robot-movement.service';
 
-@Controller()
+@Controller('command')
 export class RobotMovementController {
   constructor(private readonly robotMovementService: RobotMovementService) {
 

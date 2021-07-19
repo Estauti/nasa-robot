@@ -7,18 +7,19 @@ import { RobotDriverModule } from 'src/robot-movement/robot-driver/robot-driver.
 import { RobotDriverService } from 'src/robot-movement/robot-driver/robot-driver.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CommandLog } from 'src/db/entities/command_log.entity';
+import RobotMovementRepository from '../robot-movement.repository';
 
 @Module({
     imports: [
         CommandModule,
         PositionTrackerModule,
-        RobotDriverModule,
-        TypeOrmModule.forFeature([CommandLog])
+        RobotDriverModule
     ],
     controllers: [],
     providers: [
         CommandChainService,
-        RobotDriverService
+        RobotDriverService,
+        // RobotMovementRepository
     ],
 })
 export class CommandChainModule { }

@@ -11,5 +11,6 @@ import RobotMovementRepository from '../robot-movement.repository';
         PositionTrackerService,
         RobotMovementRepository
     ],
+    exports: [RobotMovementRepository]
 })
 export class PositionTrackerModule { }
