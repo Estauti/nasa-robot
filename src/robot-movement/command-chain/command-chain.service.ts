@@ -17,7 +17,7 @@ export class CommandChainService {
     let data = {
       requestType: 'GET', 
       command: commandChain, 
-      valid: this.isValid(commandChain),
+      valid: true,
       initialPositionX: position.x,
       initialPositionY: position.y,
       initialDirection: position.direction
