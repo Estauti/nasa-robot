@@ -1,3 +1,4 @@
+import { RobotMovementController } from './robot-movement.controller';
 import { RobotMovementService } from './robot-movement.service';
 import { Module } from '@nestjs/common';
 import { CommandChainModule } from 'src/robot-movement/command-chain/command-chain.module';
@@ -16,7 +17,8 @@ import { RobotDriverService } from 'src/robot-movement/robot-driver/robot-driver
 		RobotDriverModule,
 		TypeOrmModule.forFeature([CommandLog])
 	],
-	controllers: [],
+	controllers: [
+		RobotMovementController,],
 	providers: [
 		RobotMovementService,
 		PositionTrackerService,
