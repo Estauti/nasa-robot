@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { CommandService } from 'src/command/command.service';
-import { RobotDriverService } from 'src/robot-driver/robot-driver.service';
+import { CommandService } from 'src/robot-movement/command/command.service';
+import { RobotDriverService } from 'src/robot-movement/robot-driver/robot-driver.service';
 
 
 @Injectable()

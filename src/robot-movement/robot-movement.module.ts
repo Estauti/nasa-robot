@@ -1,13 +1,13 @@
 import { RobotMovementService } from './robot-movement.service';
 import { Module } from '@nestjs/common';
-import { CommandChainModule } from 'src/command-chain/command-chain.module';
-import { PositionTrackerModule } from 'src/positions-tracker/position-tracker.module';
-import { PositionTrackerService } from 'src/positions-tracker/position-tracker.service';
+import { CommandChainModule } from 'src/robot-movement/command-chain/command-chain.module';
+import { PositionTrackerModule } from 'src/robot-movement/positions-tracker/position-tracker.module';
+import { PositionTrackerService } from 'src/robot-movement/positions-tracker/position-tracker.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CommandLog } from 'src/db/entities/command_log.entity';
-import { CommandChainService } from 'src/command-chain/command-chain.service';
-import { RobotDriverModule } from 'src/robot-driver/robot-driver.module';
-import { RobotDriverService } from 'src/robot-driver/robot-driver.service';
+import { CommandChainService } from 'src/robot-movement/command-chain/command-chain.service';
+import { RobotDriverModule } from 'src/robot-movement/robot-driver/robot-driver.module';
+import { RobotDriverService } from 'src/robot-movement/robot-driver/robot-driver.service';
 
 @Module({
 	imports: [

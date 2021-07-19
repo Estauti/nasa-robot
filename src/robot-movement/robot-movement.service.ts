@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { CommandChainService } from 'src/command-chain/command-chain.service';
-import { PositionTrackerService } from 'src/positions-tracker/position-tracker.service';
+import { CommandChainService } from 'src/robot-movement/command-chain/command-chain.service';
+import { PositionTrackerService } from 'src/robot-movement/positions-tracker/position-tracker.service';
 
 @Injectable()
 export class RobotMovementService {
